@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circuit Mind</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Puzzle logico elettronico</p>
+        <h1>Circuit Mind</h1>
+      </div>
+      <div class="stats-panel" aria-live="polite">
+        <span>Tempo: <strong id="timeLabel">00:00</strong></span>
+        <span>Mosse: <strong id="movesLabel">0</strong></span>
+        <span>Punteggio: <strong id="scoreLabel">0</strong></span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="side-panel" aria-label="Menu di gioco">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <button id="newGameBtn" class="primary-button">Nuova Partita</button>
+
+        <div class="button-grid" role="group" aria-label="Difficolta">
+          <button class="mode-button active" data-difficulty="easy">Livello Facile</button>
+          <button class="mode-button" data-difficulty="medium">Livello Medio</button>
+          <button class="mode-button" data-difficulty="hard">Livello Difficile</button>
+        </div>
+
+        <div class="button-grid" role="group" aria-label="Modalita">
+          <button class="mode-button active" data-mode="classic">Classica</button>
+          <button class="mode-button" data-mode="challenge">Sfida 3 min</button>
+          <button class="mode-button" data-mode="infinite">Infinita</button>
+        </div>
+
+        <button id="hintBtn" class="utility-button">Suggerimento <span id="hintsLabel">3</span></button>
+        <button id="instructionsBtn" class="utility-button">Istruzioni</button>
+
+        <div class="save-card">
+          <span>Miglior punteggio</span>
+          <strong id="bestScoreLabel">0</strong>
+          <span>Ultimo livello</span>
+          <strong id="lastLevelLabel">Facile</strong>
+        </div>
+      </section>
+
+      <section class="game-area">
+        <div class="board-wrap">
+          <div id="board" class="board" aria-label="Griglia Circuit Mind"></div>
+        </div>
+        <div class="leaderboard">
+          <h2>Classifica locale</h2>
+          <ol id="leaderboardList"></ol>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="instructionsDialog" class="modal">
+    <form method="dialog">
+      <h2>Istruzioni</h2>
+      <p>Ruota le tessere per collegare la sorgente a tutti gli obiettivi. Le linee verdi sono alimentate, quelle azzurre sono spente. Ogni rotazione aggiunge una mossa.</p>
+      <p>In modalita Sfida hai 3 minuti. In modalita Infinita, il prossimo puzzle viene generato dopo ogni vittoria.</p>
+      <button class="primary-button">Chiudi</button>
+    </form>
+  </dialog>
+
+  <dialog id="winDialog" class="modal">
+    <form method="dialog">
+      <h2>Livello completato!</h2>
+      <p id="winDetails"></p>
+      <button id="nextLevelBtn" class="primary-button">Prossimo livello</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
